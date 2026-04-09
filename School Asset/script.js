@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterBtns = controlsBar.querySelectorAll('.filter-btn');
         const tableContainer = controlsBar.closest('.table-container');
         
-        // SAFETY CHECK: If it can't find the container or input, stop here so we don't break the page
         if (!tableContainer || !searchInput) return;
 
         const tableBody = tableContainer.querySelector('.asset-table tbody');
-        // SAFETY CHECK: Ensure the table body actually exists
+        // Ensure the table body actually exists
         if (!tableBody) return; 
 
         let currentCategory = 'All';
@@ -21,13 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const rows = tableBody.querySelectorAll('tr');
             
             rows.forEach(row => {
-                // Skip the "No items found" placeholder rows
                 if (row.cells.length <= 1) return;
 
                 const rowText = row.textContent.toLowerCase();
                 let categoryCell = "All"; 
                 
-                // In our tables, Category is the 3rd column (index 2)
+                
                 if (row.cells.length >= 3) {
                     categoryCell = row.cells[2].textContent.trim(); 
                 }
@@ -39,10 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Listen for typing
+      
         searchInput.addEventListener('input', filterTable);
 
-        // Listen for category button clicks
+     
         if (filterBtns.length > 0) {
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-    // 2. Add Asset Modal Logic
+    
     const addModal = document.getElementById('addAssetModal');
     const addAssetBtn = document.querySelector('.add-asset-btn');
     const cancelAddBtn = document.getElementById('cancelAddBtn');
@@ -68,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-   // 3. Edit Asset Modal Logic
+   
     const editModal = document.getElementById('editAssetModal');
     const closeEditBtn = document.getElementById('closeEditBtn');
     const editBtns = document.querySelectorAll('.edit-btn');
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Real-time Dashboard Clock Logic
+    
     const liveClock = document.getElementById('liveClock');
     
     if (liveClock) {

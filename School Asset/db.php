@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost:3307';
 $dbname = 'school_asset';
-$username = 'root'; // Change if your MySQL requires a password
+$username = 'root';
 $password = ''; 
 
 try {

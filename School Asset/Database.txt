@@ -1,0 +1,33 @@
+CREATE DATABASE school_assets;
+USE school_assets;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    role ENUM('Admin', 'Staff') NOT NULL,
+    department VARCHAR(100)
+);
+
+CREATE TABLE assets (
+    equipment_id VARCHAR(50) PRIMARY KEY,
+    resource_name VARCHAR(100) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    status ENUM('Available', 'Reserved', 'In-Use', 'Under Maintenance') DEFAULT 'Available',
+    location VARCHAR(100),
+    assigned_to VARCHAR(100) NULL,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+INSERT INTO assets (equipment_id, resource_name, category, status, location, assigned_to) VALUES
+('IT-LAP-001', 'Dell Latitude 7420', 'IT Equipment', 'In-Use', 'CS Department', 'Dr. Sarah Johnson'),
+('IT-PRJ-001', 'Epson EB-2250U', 'IT Equipment', 'Available', 'Room 301', NULL),
+('LAB-OSC-001', 'Digital Oscilloscope', 'Laboratory', 'Reserved', 'Electronics Lab', 'Prof. Michael Chen');
+
+
+INSERT INTO users (email, password, full_name, role, department) VALUES 
+('admin@itdept.edu', 'password123', 'IT Administrator', 'Admin', 'IT Department'),
+('faculty@dept.edu', 'password123', 'Dr. Sarah Johnson', 'Staff', 'Computer Science');

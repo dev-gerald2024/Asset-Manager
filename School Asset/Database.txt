@@ -17,7 +17,8 @@ CREATE TABLE assets (
     status ENUM('Available', 'Reserved', 'In-Use', 'Under Maintenance') DEFAULT 'Available',
     location VARCHAR(100),
     assigned_to VARCHAR(100) NULL,
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    department VARCHAR (255) NULL
 );
 
 
